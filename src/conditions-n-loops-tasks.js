@@ -495,8 +495,32 @@ function sortByAsc(arr) {
 
 //   return resultEven + resultOdd;
 // }
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let strResult = str;
+  let strHalf = '';
+  let n = iterations;
+  for (let j = 1; j <= n; j += 1) {
+    for (let i = 0; i < strResult.length; i += 1) {
+      if (i % 2 === 0) {
+        strHalf += strResult[i];
+      }
+    }
+    for (let i = 0; i < strResult.length; i += 1) {
+      if (i % 2 === 1) {
+        strHalf += strResult[i];
+      }
+    }
+    if (str === strHalf) {
+      n %= j;
+      j = 0;
+      strResult = strHalf;
+      strHalf = '';
+    } else {
+      strResult = strHalf;
+      strHalf = '';
+    }
+  }
+  return strResult;
 }
 
 /**
